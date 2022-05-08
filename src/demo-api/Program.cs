@@ -1,4 +1,5 @@
 using demo_api.Context;
+using demo_api.Extensions;
 using demo_api.Middlewares;
 using demo_api.Services;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddJWTTokenServices(builder.Configuration);
 
 builder.Services.AddDbContext<MyContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
@@ -35,6 +38,8 @@ app.UseCustomErrorHandlerMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapControllers();
 

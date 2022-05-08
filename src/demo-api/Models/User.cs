@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using demo_api.Constants;
 
 namespace demo_api.Models
@@ -13,5 +14,10 @@ namespace demo_api.Models
         public UserRoles Role { get; set; } = UserRoles.User;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+
+        // Navigation
+
+        public UserToken? UserToken { get; set; }
+
     }
 }
