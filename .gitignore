@@ -353,3 +353,4 @@ MigrationBackup/
 
 .vscode
 src/demo-api/Migrations
+.idea
